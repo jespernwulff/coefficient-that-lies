@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231E2430'/%3E%3Cpath d='M5 24 C 13 24, 13 8, 21 8 L 28 8' fill='none' stroke='%236FA3E8' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='9' cy='23' r='3' fill='%23FFD166'/%3E%3C/svg%3E">
+<title>The Coefficient That Lies</title>
+<meta name="description" content="An explorable explanation of interaction effects in logit, probit and other nonlinear models, built on the ginteff paper.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css?v=1789991589">
+</head>
+<body>
+<div id="app" class="app">
+  <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+    <defs>
+      <linearGradient id="seamGlow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".10"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      <linearGradient id="heroStroke" x1="0" y1="1" x2="1" y2="0"><stop offset="0" style="stop-color:var(--amber)"/><stop offset=".42" style="stop-color:var(--blue)"/><stop offset="1" style="stop-color:var(--blue)"/></linearGradient>
+      <radialGradient id="heroPool" cx="0" cy=".88" r=".34"><stop offset="0" style="stop-color:var(--latent)" stop-opacity=".92"/><stop offset=".55" style="stop-color:var(--latent)" stop-opacity=".35"/><stop offset="1" style="stop-color:var(--latent)" stop-opacity="0"/></radialGradient>
+      <filter id="lamp" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <marker id="arrowAmber" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 Z" style="fill:var(--amber)"/></marker>
+    </defs>
+  </svg>
+  <header class="topbar">
+    <a class="brand" href="#start/0" data-go="start/0" aria-label="Start over">
+      <svg class="brand-mark" viewBox="0 0 40 24" aria-hidden="true"><path d="M2 21 C 14 21, 14 3, 26 3 L 38 3" fill="none" stroke="url(#heroStroke)" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="12" r="3.2" fill="currentColor"/></svg>
+      <span class="brand-name">The Coefficient That Lies</span>
+    </a>
+    <div class="topbar-right">
+      <svg class="prog-curve" id="prog-curve" viewBox="0 0 120 26" aria-hidden="true"><path class="track" d="M3 22 C 45 22, 55 4, 117 4"/><g><circle class="firm" r="4.5"/></g></svg>
+      <span class="deck-pos" id="deck-pos" aria-live="polite"></span>
+      <button class="btn btn-ghost" id="map-btn" type="button" aria-haspopup="dialog" aria-controls="map">Map <kbd>m</kbd></button>
+    </div>
+  </header>
+
+  <main class="stage-area" id="stage-area"></main>
+
+  <nav class="bottombar" aria-label="Progress along the path">
+    <button class="btn nav-btn" id="prev-btn" type="button" aria-label="Previous slide">&larr; <span>Back</span></button>
+    <div class="dots" id="dots" role="tablist"></div>
+    <button class="btn btn-primary nav-btn" id="next-btn" type="button" aria-label="Next slide"><span>Next</span> &rarr;</button>
+  </nav>
+
+  <div class="map" id="map" role="dialog" aria-modal="true" aria-labelledby="map-title" hidden>
+    <div class="map-panel">
+      <div class="map-head">
+        <h2 id="map-title">Where you are</h2>
+        <p class="map-sub">The main path runs left to right: 12 short steps. The rooms below it are optional, a minute or two each. Anything you have visited is filled in; click anywhere to go there.</p>
+        <button class="btn btn-ghost" id="map-close" type="button" aria-label="Close map">Close <kbd>esc</kbd></button>
+      </div>
+      <div class="map-body" id="map-body"></div>
+    </div>
+  </div>
+</div>
+
+<script src="engine.js?v=1789991589"></script>
+<script src="data.js?v=1789991589"></script>
+<script src="app.js?v=1789991589"></script>
+<script src="decks.js?v=1789991589"></script>
+<script src="decks2.js?v=1789991589"></script>
+<script src="decks_side.js?v=1789991589"></script>
+<script>window.addEventListener('DOMContentLoaded', function () { App.boot(); });</script>
+</body>
+</html>
